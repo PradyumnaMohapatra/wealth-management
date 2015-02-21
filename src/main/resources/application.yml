@@ -1,0 +1,33 @@
+#
+# Copyright (c) 1/22/15 8:50 PM.Nth Dimenzion, Inc - All Rights Reserved
+# Unauthorized copying of this file, via any medium is strictly prohibited
+# Proprietary and confidential
+#
+
+server:
+  port: 6443
+  context-path: /portfolio
+
+spring:
+  thymeleaf:
+      check-template-location: true
+      cache: false
+
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    database: MYSQL
+    show-sql: true
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/wealth_mgmt?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&rewriteBatchedStatements=true
+    driverClassName: com.mysql.jdbc.Driver
+    username: root
+    password: welcome
+
+
+flyway:
+  check-location: false
+  enabled: false
+
