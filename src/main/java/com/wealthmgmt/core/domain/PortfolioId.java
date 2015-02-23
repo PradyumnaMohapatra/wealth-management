@@ -5,6 +5,8 @@ import lombok.ToString;
 import org.axonframework.common.Assert;
 import org.axonframework.domain.IdentifierFactory;
 
+import javax.persistence.Embeddable;
+import javax.persistence.IdClass;
 import java.io.Serializable;
 
 /**
@@ -13,6 +15,7 @@ import java.io.Serializable;
  */
 @EqualsAndHashCode
 @ToString
+@Embeddable
 public class PortfolioId implements Serializable {
 
     private String identifier;

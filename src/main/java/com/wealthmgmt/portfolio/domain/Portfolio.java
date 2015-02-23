@@ -10,6 +10,7 @@ import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 import org.joda.time.DateTime;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.LinkedHashSet;
@@ -21,17 +22,21 @@ import java.util.LinkedHashSet;
  * @author: pradyumna
  * @since 1.0 21/02/2015
  */
+@Entity
 public class Portfolio extends AbstractAnnotatedAggregateRoot<PortfolioId> {
 
+    @Transient
     private Collection<PurchaseTransaction> purchaseTransactions;
+    @Transient
     private Money totalInvestment;
+    @Transient
     private Collection<SellTransaction> sellTransactions;
 
+    @EmbeddedId
     @AggregateIdentifier
     private PortfolioId portfolioIdentifier;
 
     protected Portfolio() {
-        System.out.println("Check when is this called....");
     }
 
     public Portfolio(PortfolioId portfolioIdentifier) {
@@ -40,14 +45,12 @@ public class Portfolio extends AbstractAnnotatedAggregateRoot<PortfolioId> {
 
     @EventHandler
     protected void handle(PortfolioCreated event) {
-        System.out.println("Portfolio created");
         this.portfolioIdentifier = event.getPortfolioIdentifier();
         totalInvestment = Money.of(CurrencyUnit.USD, BigDecimal.ZERO);
     }
 
     @EventHandler
     private void handle(PurchaseTxnAdded event) {
-        System.out.println(" Adding the Purchase Transaction " + event);
         if (purchaseTransactions == null) {
             purchaseTransactions = new LinkedHashSet<>();
         }

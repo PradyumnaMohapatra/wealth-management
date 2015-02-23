@@ -2,8 +2,12 @@ package com.wealthmgmt.portfolio.domain;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.hibernate.annotations.Type;
 import org.joda.money.Money;
 import org.joda.time.DateTime;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
 
 /**
  * @author: pradyumna
@@ -11,6 +15,7 @@ import org.joda.time.DateTime;
  */
 @EqualsAndHashCode
 @ToString()
+@Entity
 final class PurchaseTransaction {
 
     private final String stockName;

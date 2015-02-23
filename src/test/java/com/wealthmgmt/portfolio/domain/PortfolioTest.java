@@ -31,7 +31,7 @@ public class PortfolioTest {
 
     @Test
     public void testCreationOfPortfolio() {
-        PortfolioId portfolioId =  new PortfolioId();
+        PortfolioId portfolioId = new PortfolioId();
         fixture.given()
                 .when(new PortfolioCommand(portfolioId))
                 .expectStoredEvents(new PortfolioCreated(portfolioId));
@@ -39,7 +39,7 @@ public class PortfolioTest {
 
     @Test
     public void testPurchaseTxnAddedToPortfolio() {
-        PortfolioId portfolioId =  new PortfolioId();
+        PortfolioId portfolioId = new PortfolioId();
         DateTime dateTime = DateTime.now();
         fixture.given(new PortfolioCreated(portfolioId))
                 .when(new PurchaseCommand("APPLE", dateTime, 100, Money.of(CurrencyUnit.USD, 210.34d), portfolioId))

@@ -17,7 +17,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class PurchaseTxnAdded implements Serializable{
+public class PurchaseTxnAdded implements Serializable {
 
     private String stockName;
     private DateTime purchasedOn;
